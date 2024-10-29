@@ -11,7 +11,8 @@ public class Hero {
         this.name = name;
     }
 
-    public void attackEnemy() {
-        System.out.println("Герой атакует врага");;
+    public void attackEnemy(Enemy enemy) {
+        System.out.println("Герой атакует врага");
+        enemy.takeDamage(40);
     }
 }
