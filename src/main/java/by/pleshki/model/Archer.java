@@ -1,9 +1,9 @@
 package by.pleshki.model;
 
-public class Archer extends Hero{
+public class Archer extends Hero {
     @Override
     public void attackEnemy(Enemy enemy) {
-        System.out.println("герой стреляет из лука");
+        System.out.println("герой стреляет в " + enemy + " из лука");
         enemy.takeDamage(22);
     }
 

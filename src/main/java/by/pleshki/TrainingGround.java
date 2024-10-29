@@ -27,6 +27,7 @@ public class TrainingGround {
         archer1.attackEnemy(enemy2);
         System.out.println(enemy1);
         System.out.println(enemy2);
-
+        System.out.println(enemy1.isAlive());
+        System.out.println(enemy2.isAlive());
     }
 }

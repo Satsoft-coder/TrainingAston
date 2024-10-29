@@ -1,23 +1,26 @@
 package by.pleshki.model;
 
-public class Enemy {
+public class Enemy implements Mortal {
     private String name;
     private int health;
 
     @Override
+    public boolean isAlive() {
+        return health>0?true:false;
+    }
+
+    @Override
     public String toString() {
-        return "Enemy{" +
-                "name='" + name + '\'' +
-                ", health=" + health +
-                '}';
+        return "Враг " + name + ", health=" + health;
     }
 
     public void takeDamage(int damage) {
-        if (health <= 0) {
+        if (!isAlive()) {
             System.out.println(name + " уже мертв");
         } else {
             health -= damage;
-            if (health <= 0) {
+            if (!isAlive()) {
+                health=0;
                 System.out.println(name + " убит");
             }
         }

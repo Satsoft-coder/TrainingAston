@@ -1,6 +1,6 @@
 package by.pleshki.model;
 
-public class Mage extends Hero{
+public class Mage extends Hero {
 
     public Mage(String name) {
         super(name);
@@ -8,7 +8,7 @@ public class Mage extends Hero{
 
     @Override
     public void attackEnemy(Enemy enemy) {
-        System.out.println("Герой атакует магическим шаром");
+        System.out.println("Герой атакует " + enemy + " магическим шаром");
         enemy.takeDamage(25);
     }
 }
