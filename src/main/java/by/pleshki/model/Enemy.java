@@ -3,10 +3,11 @@ package by.pleshki.model;
 public class Enemy implements Mortal {
     private String name;
     private int health;
+    private int damage;
 
     @Override
     public boolean isAlive() {
-        return health>0?true:false;
+        return health > 0 ? true : false;
     }
 
     @Override
@@ -20,9 +21,9 @@ public class Enemy implements Mortal {
         } else {
             health -= damage;
             if (!isAlive()) {
-                health=0;
+                health = 0;
                 System.out.println(name + " убит");
-            }
+            }else System.out.println("У "+name+" осталось "+health+" здоровья");
         }
     }
 
@@ -38,9 +39,10 @@ public class Enemy implements Mortal {
         return health;
     }
 
-    public Enemy(String name, int health) {
+    public Enemy(String name, int health, int damage) {
         this.name = name;
         this.health = health;
+        this.damage = damage;
     }
 
 }
