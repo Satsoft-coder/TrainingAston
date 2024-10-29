@@ -27,6 +27,11 @@ public class Enemy implements Mortal {
         }
     }
 
+    public void attackHero(Hero hero) {
+        System.out.println("Враг атакует героя");
+        hero.takeDamage(damage);
+    }
+
     public void setHealth(int health) {
         this.health = health;
     }

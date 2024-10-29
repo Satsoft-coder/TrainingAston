@@ -1,16 +1,14 @@
 package by.pleshki;
 
-import by.pleshki.model.Archer;
-import by.pleshki.model.Enemy;
-import by.pleshki.model.Mage;
-import by.pleshki.model.Warrior;
+import by.pleshki.model.*;
 
 public class BattleGround {
     public static void main(String[] args) {
         Enemy enemy1 = new Enemy("Инстасамка", 50, 10);
         Enemy enemy2 = new Enemy("Мелстрой", 40, 15);
         Enemy enemy3 = new Enemy("Милохин", 40, 20);
-        Enemy enemy4 = new Enemy("Киркоров", 25, 1);
+        Enemy enemy4 = new SuperEnemy("Киркоров", 25, 1);
+
 
         Warrior warrior1 = new Warrior("Мизулина", 100, 25);
         Mage mage1 = new Mage("Рамзан", 90, 30);
@@ -23,6 +21,11 @@ public class BattleGround {
         archer1.attackEnemy(enemy2);
         mage1.attackEnemy(enemy3);
         archer1.attackEnemy(enemy2);
+
+        enemy4.attackHero(archer1);
+        mage1.attackEnemy(enemy4);
+
+        archer1.attackEnemy(enemy4);
 
     }
 }
