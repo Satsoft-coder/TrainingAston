@@ -19,6 +19,7 @@ public class Main {
         animalList1.add(dog1);
         animalList1.add(dog2);
         animalList1.add(dog2);
+        animalList1.trim();
         animalList1.add(kitty1);
         animalList1.add(dog1);
         animalList1.add(dog2);
@@ -42,9 +43,17 @@ public class Main {
         character.add(2, 'Z');
         character.add(7,'S');
         character.add(9, 'Y');
+        character.add('O');
 
         System.out.println(character.toString());
         System.out.println(animalList1.toString());
         System.out.println(animalList1.getSize());
+
+        System.out.println(arrayListAnalog1.toString());
+        arrayListAnalog1.remove(2);
+        System.out.println(arrayListAnalog1.toString());
+
+        character.remove('d');
+        System.out.println(character.toString());
     }
 }

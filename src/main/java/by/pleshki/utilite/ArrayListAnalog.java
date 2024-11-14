@@ -59,14 +59,56 @@ public class ArrayListAnalog<E> {
         }
     }
 
+    public void trim() {
+        if (size < elementData.length) {
+            Object[] tempArray = new Object[size];
+            System.arraycopy(elementData, 0, tempArray, 0, size);
+            elementData = tempArray;
+        }
+    }
+
+    public boolean remove(Object object) {
+        int i = 0;
+        boolean result = false;
+        if (object == null) {
+            for (; i < size; i++) {
+                if (elementData[i] == null) {
+                    result = true;
+                    break;
+                }
+            }
+        } else {
+            for (; i < size; i++) {
+                if (object.equals(elementData[i])) {
+                    result = true;
+                    break;
+                }
+            }
+        }
+        if (!result) {
+            return result;
+        }
+        removeElement(i);
+        return true;
+    }
+
+    private void removeElement(int i) {
+        final int newSize;
+        if ((newSize = size - 1) > i)
+            System.arraycopy(elementData, i + 1, elementData, i, newSize - i);
+        elementData[size = newSize] = null;
+    }
+
     public int getSize() {
         return size;
     }
 
     @Override
     public String toString() {
+        Object[] tempData=new Object[size];
+        System.arraycopy(elementData,0,tempData,0,size);
         return "ArrayListAnalog{" +
-                "elementData=" + Arrays.toString(elementData) +
+                "elementData=" + Arrays.toString(tempData) +
                 '}';
     }
 }
