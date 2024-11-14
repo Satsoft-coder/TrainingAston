@@ -1,59 +1,50 @@
 package by.pleshki;
 
-import by.pleshki.model.*;
-import by.pleshki.service.StudentService;
-import by.pleshki.service.TeacherService;
-
-import java.util.ArrayList;
-import java.util.List;
+import by.pleshki.model.Animal;
+import by.pleshki.model.Dog;
+import by.pleshki.model.Kitty;
+import by.pleshki.utilite.ArrayListAnalog;
 
 public class Main {
     public static void main(String[] args) {
+        Dog dog1 = new Dog(12, 15, "Sharik");
+        Dog dog2 = new Dog(11, 10, "Polkan");
+        Kitty kitty1 = new Kitty(11, 2, "Pushok", "Pers");
 
-        Teacher teacher1 = new Teacher("Dmitry", "Ryabov");
-        Teacher teacher2 = new Teacher("Ivan", "Urgant");
+        ArrayListAnalog<Animal> animalList1 = new ArrayListAnalog<>();
+        animalList1.add(dog1);
+        animalList1.add(dog2);
+        animalList1.add(dog2);
+        animalList1.add(kitty1);
+        animalList1.add(dog1);
+        animalList1.add(dog2);
+        animalList1.add(dog2);
+        animalList1.add(kitty1);
+        animalList1.add(dog1);
+        animalList1.add(dog2);
+        animalList1.add(dog2);
+        animalList1.add(kitty1);
 
-        Student student1 = new Student("Evgen", "Onegin");
-        Student student2 = new Student("Ostap", "Bender");
-        Student student3 = new Student("Kot", "Matroskin");
+        ArrayListAnalog<Integer> arrayListAnalog1 = new ArrayListAnalog<>(1);
+        for (int i = 0; i < 50; i++) {
+            arrayListAnalog1.add(i);
+        }
 
-        //преподаватели создают курсы
-//        Course course1 = addCourse(teacher1, "Alchemy");
-//        Course course2 = addCourse(teacher1, "Esoteric");
+        ArrayListAnalog<Character> character = new ArrayListAnalog<>();
+        character.add('a');
+        character.add('b');
+        character.add('c');
+        character.add('d');
+        character.add('e');
+        character.add('f');
+        character.add('g');
 
-        TeacherService.addCourse(teacher1, "Alchemy");
-        TeacherService.addCourse(teacher1, "Esoteric");
-        TeacherService.addCourse(teacher1, "Flat Earth");
-        TeacherService.addCourse(teacher2, "Biology");
+        character.add(2, 'Z');
+        character.add(7,'S');
+        character.add(9, 'Y');
 
-        //получаем список курсов
-        List<Course> courseList=CourseList.getCourseList();
-
-        //студенты записываются на курсы
-        StudentService.signUpForCourses(courseList.get(0),student1);
-        StudentService.signUpForCourses(courseList.get(0),student2);
-        StudentService.signUpForCourses(courseList.get(0),student3);
-        StudentService.signUpForCourses(courseList.get(1),student1);
-        StudentService.signUpForCourses(courseList.get(1),student2);
-        StudentService.signUpForCourses(courseList.get(2),student3);
-        StudentService.signUpForCourses(courseList.get(3),student1);
-        StudentService.signUpForCourses(courseList.get(3),student2);
-
-        //получаем список курсов у преподавателя
-        List<Course>teacherCourseList=TeacherService.getCourses(teacher1);
-        System.out.println(teacherCourseList);
-
-        //получаем список студентов на конкретном курсе
-        List<Student>studentList=TeacherService.getStudentOnCorse(teacherCourseList.get(0));
-        System.out.println(studentList);
-
-        //выставляем оценку и архивим
-        TeacherService.setRatingOnStudent(teacher1,teacherCourseList.get(0),studentList.get(0),5);
-        TeacherService.setRatingOnStudent(teacher1,teacherCourseList.get(0),studentList.get(1),3);
-        TeacherService.setRatingOnStudent(teacher1,teacherCourseList.get(0),studentList.get(2),4);
-
-
-        System.out.println(Arhive.getTestResults());
-
+        System.out.println(character.toString());
+        System.out.println(animalList1.toString());
+        System.out.println(animalList1.getSize());
     }
 }
