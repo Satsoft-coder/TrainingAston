@@ -20,9 +20,8 @@ public class ArrayListAnalog<E> {
     }
 
     public void add(E e) {
-        if (size == elementData.length) {
+        if (size == elementData.length)
             listExpansion();
-        }
         elementData[size] = e;
         size++;
     }
@@ -49,11 +48,8 @@ public class ArrayListAnalog<E> {
             if (index == size) {
                 elementData[index] = e;
             } else {
-                int movingSize = size - index;
-                Object[] tempArray = new Object[movingSize];
-                System.arraycopy(elementData, index, tempArray, 0, movingSize);
+                System.arraycopy(elementData, index, elementData, index + 1, size - index);
                 elementData[index] = e;
-                System.arraycopy(tempArray, 0, elementData, index + 1, movingSize);
             }
             size++;
         }
@@ -85,18 +81,29 @@ public class ArrayListAnalog<E> {
                 }
             }
         }
-        if (!result) {
-            return result;
-        }
-        removeElement(i);
-        return true;
+        if (result)
+            return removeElement(i);
+        return result;
     }
 
-    private void removeElement(int i) {
+    public boolean remove(int index) {
+        if (index <= size)
+            return removeElement(index);
+        return false;
+    }
+
+    private boolean removeElement(int i) {
         final int newSize;
         if ((newSize = size - 1) > i)
             System.arraycopy(elementData, i + 1, elementData, i, newSize - i);
         elementData[size = newSize] = null;
+        return true;
+    }
+
+    public void set(Object e, int index) {
+        if (index <= size) {
+            elementData[index] = e;
+        } else throw new IndexOutOfBoundsException("Index out of range");
     }
 
     public int getSize() {
@@ -105,8 +112,8 @@ public class ArrayListAnalog<E> {
 
     @Override
     public String toString() {
-        Object[] tempData=new Object[size];
-        System.arraycopy(elementData,0,tempData,0,size);
+        Object[] tempData = new Object[size];
+        System.arraycopy(elementData, 0, tempData, 0, size);
         return "ArrayListAnalog{" +
                 "elementData=" + Arrays.toString(tempData) +
                 '}';

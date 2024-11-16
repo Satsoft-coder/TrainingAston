@@ -45,15 +45,17 @@ public class Main {
         character.add(9, 'Y');
         character.add('O');
 
-        System.out.println(character.toString());
-        System.out.println(animalList1.toString());
+        System.out.println(character);
+        System.out.println(animalList1);
+        animalList1.remove(dog2);
+        System.out.println(animalList1);
         System.out.println(animalList1.getSize());
 
-        System.out.println(arrayListAnalog1.toString());
+        System.out.println(arrayListAnalog1);
         arrayListAnalog1.remove(2);
-        System.out.println(arrayListAnalog1.toString());
+        System.out.println(arrayListAnalog1);
 
         character.remove('d');
-        System.out.println(character.toString());
+        System.out.println(character);
     }
 }
