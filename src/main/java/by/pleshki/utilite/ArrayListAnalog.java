@@ -63,6 +63,12 @@ public class ArrayListAnalog<E> {
         }
     }
 
+    public void clear() {
+        for (int i = 0; i < size; i++)
+            elementData[i] = null;
+        size = 0;
+    }
+
     public boolean remove(Object object) {
         int i = 0;
         boolean result = false;
